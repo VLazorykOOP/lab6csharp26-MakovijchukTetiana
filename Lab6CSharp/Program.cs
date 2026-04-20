@@ -1,58 +1,38 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab6 C# ");
-AnyFunc();
+﻿using System;
+using Lab6.Task1;
+using Lab6.Task2;
+using Lab6.Task3;
+using Lab6.Task4;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
+namespace Lab6
 {
-    Console.WriteLine(" Some function in top-level");
-}
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-User.UserClass cl2 = new();
-cl2.Name = " UserClass namespace User ";
-
-
-
-
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
-
-namespace User
-{
-    class UserClass
+    class Program
     {
-        public string Name { get; set; }
-        public UserClass()
+        static void Main(string[] args)
         {
-            Name = "NoName";
-        }
-        UserClass(string n)
-        {
-            Name = n;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            bool exit = false;
+
+            while (!exit)
+            {
+                Console.WriteLine("  ЛАБОРАТОРНА РОБОТА №6 (МЕНЮ)");
+                Console.WriteLine("1 - Завдання 1: Інтерфейси та Type Pattern (Документи)");
+                Console.WriteLine("2 - Завдання 2: IComparable та Пошук (ПЗ)");
+                Console.WriteLine("3 - Завдання 3: Обробка винятків (Exceptions)");
+                Console.WriteLine("4 - Завдання 4: Перебір об'єктів (foreach/IEnumerator)");
+                Console.WriteLine("0 - Вихід");
+                Console.Write("Ваш вибір: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1": Task1Runner.Run(); break;
+                    case "2": Task2Runner.Run(); break;
+                    case "3": Task3Runner.Run(); break;
+                    case "4": Task4Runner.Run(); break;
+                    case "0": exit = true; break;
+                    default: Console.WriteLine("Помилка вибору!"); break;
+                }
+            }
         }
     }
-
-}
-class UserClass
-{
-    public string Name { get; set; }
 }
